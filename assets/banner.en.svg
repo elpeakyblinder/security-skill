@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
+  <title id="title">Security Regression Guard</title>
+  <desc id="desc">Policy, code and evidence. An agent skill by Guijosa Dev for reviewing security boundaries.</desc>
+  <rect width="1200" height="360" rx="20" fill="#f2f0e9"/>
+  <path d="M0 272H1200M892 0V360" stroke="#d7d6cd"/>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <rect x="48" y="40" width="12" height="12" rx="2" fill="#16745b"/>
+    <text x="72" y="51" font-size="14" font-weight="700" letter-spacing="2" fill="#285344">GUIJOSA DEV / AGENT SKILL</text>
+    <text x="46" y="132" font-size="58" font-weight="700" letter-spacing="-2" fill="#172a27">Security</text>
+    <text x="46" y="196" font-size="58" font-weight="700" letter-spacing="-2" fill="#172a27">Regression Guard</text>
+    <text x="49" y="238" font-size="18" fill="#4c5f58">From declared permissions to verified behavior.</text>
+    <text x="49" y="324" font-size="15" font-weight="700" letter-spacing="1" fill="#285344">01 POLICY</text>
+    <path d="M200 317H247m-7-6 7 6-7 6" fill="none" stroke="#748880" stroke-width="2"/>
+    <text x="276" y="324" font-size="15" font-weight="700" letter-spacing="1" fill="#285344">02 CODE</text>
+    <path d="M415 317H462m-7-6 7 6-7 6" fill="none" stroke="#748880" stroke-width="2"/>
+    <text x="490" y="324" font-size="15" font-weight="700" letter-spacing="1" fill="#285344">03 EVIDENCE</text>
+    <text x="1046" y="322" font-size="13" text-anchor="middle" letter-spacing="1" fill="#285344">CC BY-NC 4.0</text>
+  </g>
+  <rect x="942" y="46" width="208" height="178" rx="16" fill="#172a27"/>
+  <path d="M980 85H1112M980 116H1112M980 147H1062M980 178H1088" stroke="#3e5c51" stroke-width="2"/>
+  <g fill="#78bc9d">
+    <rect x="980" y="80" width="26" height="10" rx="5"/>
+    <rect x="1004" y="111" width="45" height="10" rx="5"/>
+    <rect x="1026" y="142" width="22" height="10" rx="5"/>
+    <rect x="988" y="173" width="49" height="10" rx="5"/>
+  </g>
+  <circle cx="1102" cy="176" r="33" fill="#dfb76c"/>
+  <path d="m1089 174-8 5 8 5m26-10 8 5-8 5m-10-16-7 25" fill="none" stroke="#172a27" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

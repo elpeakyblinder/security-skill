@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: "Reporte de seguridad privado / Private security report"
+    url: "https://github.com/elpeakyblinder/security-skill/blob/main/SECURITY.md"
+    about: "Lee el canal de contacto antes de publicar detalles sensibles."

@@ -14,10 +14,10 @@ Guía para **Guijosa Dev**. La carpeta está preparada para distribuirse como re
 
 1. El repositorio elegido es **[`elpeakyblinder/security-skill`](https://github.com/elpeakyblinder/security-skill)**.
 2. Descripción sugerida: **Skill generalista para revisar autorización, aislamiento de datos y regresiones de seguridad con agentes de IA. CC BY-NC 4.0.**
-3. Sube el **contenido** de esta carpeta a la raíz del repositorio: README, LICENSE, PUBLICAR, assets, skillSecurity.md y security-regression-guard. Evita añadir otra carpeta exterior que oculte el README.
+3. Sube el **contenido** de esta carpeta a la raíz del repositorio, incluida `.github`, ambas versiones del README, las guías y los archivos de versión. Evita añadir otra carpeta exterior que oculte el README. Git incluye los archivos ocultos preparados en el commit.
 4. En la vista previa, comprueba la cabecera, las tablas, los desplegables, los enlaces relativos y el aviso al final. Abre también el archivo instalable.
 5. Comprueba que el enlace de atribución y los comandos de instalación del README apuntan a `elpeakyblinder/security-skill`. Actualízalos si cambia el propietario o el nombre del repositorio.
-6. Cuando hayas comprobado el paquete, crea una release con una etiqueta como **`v1.0.0`**, describiendo el alcance y lo validado realmente. El ZIP del código fuente permite descargarlo y seguir la instalación manual.
+6. La primera versión del contenido es **`0.1.0`**, con etiqueta **`v0.1.0`**. Publica una release desde esa etiqueta después de subirla, describiendo el alcance y lo validado realmente. El ZIP del código fuente permite descargarla y seguir la instalación manual.
 
 GitHub mantiene guías oficiales para [crear repositorios](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository), [añadir archivos](https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository), [gestionar releases](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository) y [licenciar un repositorio](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository).
 
@@ -42,6 +42,29 @@ El README también contiene las rutas de copia manual para Codex, Claude Code, G
 Publicar en GitHub **no la registra automáticamente en los catálogos de los agentes**. Esa distribución es opcional y puede requerir otro formato de paquete y cumplir sus condiciones. La instalación manual documentada no depende de que un catálogo acepte el proyecto o su licencia no comercial.
 
 Antes de anunciar «probada en» un agente, comprueba su detección y ejecución en una tarea aislada, registra versión y fecha y revisa las acciones realizadas. Por ahora se han contrastado rutas y formatos con documentación oficial; eso no constituye una evaluación de eficacia en todos los agentes o modelos.
+
+## Mantener versiones e idiomas
+
+La versión sigue el formato `MAYOR.MENOR.PARCHE`, adaptado a una colección de instrucciones: los parches corrigen redacción o fallos acotados; las versiones menores añaden comprobaciones o documentación; los cambios incompatibles de formato, invocación o alcance se explican expresamente. Mientras esté en `0.x`, se considera una etapa inicial y los cambios de alcance importantes incrementan la versión menor. Referencia: [Versionado Semántico](https://semver.org/lang/es/).
+
+Para preparar otra versión, actualiza `VERSION`, `metadata.version` en ambas copias de la skill, los indicadores y textos de ambos README y `CHANGELOG.md`. Fecha la entrada al cerrar la versión y deja una sección «Sin publicar» para lo siguiente. Comprueba que las traducciones y los avisos coincidan.
+
+Guarda el cambio en un commit, crea una etiqueta anotada nueva y súbela junto con la rama. Para la primera versión, si la etiqueta local ya está preparada:
+
+```bash
+git push origin main
+git push origin v0.1.0
+```
+
+En GitHub, crea una release seleccionando esa etiqueta y utiliza la entrada correspondiente del changelog como notas. Una etiqueta local no es una release publicada. No muevas una etiqueta ya publicada para corregirla: prepara otra versión. No hay publicación automática ni un bot de releases configurado.
+
+Los enlaces de idioma solo deben apuntar a traducciones existentes. El español es la referencia; las traducciones conservan el significado de las limitaciones y de la licencia. Actualmente hay README en español e inglés; no hay una traducción independiente de las instrucciones instalables.
+
+## Habilitar y revisar contribuciones en GitHub
+
+Las guías y plantillas aparecerán cuando estén en la rama predeterminada del repositorio. Comprueba que Issues esté habilitado y abre el selector de nueva issue y una PR de prueba en borrador para revisar su presentación. No necesitas dar permisos de escritura para recibir PR desde forks.
+
+Si quieres exigir revisión antes de integrar cambios, configura una regla para `main` que requiera PR y bloquee force pushes y borrados según tus necesidades. Tener CONTRIBUTING.md no activa esa protección automáticamente. Antes de exigir un aprobador adicional, asegúrate de contar con alguien que pueda revisar tus propias PR. Esta preparación no cambia ajustes remotos ni instala bots de firma.
 
 ## Gestionar permisos comerciales
 

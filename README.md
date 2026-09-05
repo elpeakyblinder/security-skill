@@ -5,6 +5,14 @@
 <h1 align="center">Security Regression Guard</h1>
 
 <p align="center">
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-0.1.0-16745b" alt="Versión del contenido: 0.1.0"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-CC_BY--NC_4.0-315a78" alt="Licencia CC BY-NC 4.0"></a>
+  <a href="CONTRIBUTING.md"><img src="https://img.shields.io/badge/contributions-welcome-785a30" alt="Contribuciones bienvenidas"></a>
+</p>
+
+<p align="center"><strong>Español</strong> · <a href="README.en.md" lang="en">English</a></p>
+
+<p align="center">
   Instrucciones para que tu agente revise permisos, siga los efectos reales del código<br>
   y compruebe sus correcciones con pruebas de comportamiento.
 </p>
@@ -18,6 +26,8 @@
   <a href="#por-qué-existe">Por qué existe</a> ·
   <a href="#instalación">Instalación</a> ·
   <a href="#cómo-usarla">Uso</a> ·
+  <a href="CONTRIBUTING.md">Contribuir</a> ·
+  <a href="#versiones">Versiones</a> ·
   <a href="#licencia-y-uso-comercial">Licencia</a> ·
   <a href="#aviso-de-responsabilidad">Aviso de responsabilidad</a>
 </p>
@@ -178,10 +188,17 @@ Los ejemplos delimitan tareas distintas. Instalar esta skill no concede permisos
 ```text
 .
 ├── README.md                          Presentación, instalación y condiciones
+├── README.en.md                       English documentation
+├── CONTRIBUTING.md                    Cómo proponer mejoras y enviar PR
+├── SECURITY.md                        Reportes sensibles por canal privado
+├── CHANGELOG.md                       Historial de cambios
+├── VERSION                            Versión del contenido
+├── .github/                           Plantillas de issues y pull requests
 ├── LICENSE                            Texto oficial de CC BY-NC 4.0
 ├── PUBLICAR.md                        Guía de publicación para el mantenedor
 ├── assets/
-│   └── banner.svg                     Cabecera del README
+│   ├── banner.svg                     Cabecera en español
+│   └── banner.en.svg                  English banner
 ├── skillSecurity.md                   Copia de lectura independiente
 └── security-regression-guard/
     └── SKILL.md                       Fuente principal y archivo instalable
@@ -191,11 +208,19 @@ La fuente principal es **[`security-regression-guard/SKILL.md`](security-regress
 
 ## Aportaciones
 
-¿Encontraste una omisión o una instrucción que produce una mala decisión? Describe el contexto mínimo, el comportamiento observado, el esperado y una prueba reproducible con datos sintéticos. Las mejoras deben conservar el enfoque generalista y el alcance autorizado por el usuario.
+**Las contribuciones son bienvenidas.** Puedes reportar errores, proponer comprobaciones, mejorar traducciones o revisar cambios. Lee [CONTRIBUTING.md](CONTRIBUTING.md), crea un fork y abre una PR hacia `main`; no necesitas acceso de escritura. Se aceptan propuestas en español e inglés y Guijosa Dev revisa qué se integra.
 
-No incluyas credenciales, datos personales ni información privada de clientes. Si el hallazgo expone un sistema real, contacta primero por correo en lugar de publicar sus detalles en una issue.
+[Proponer una mejora o reportar un error](https://github.com/elpeakyblinder/security-skill/issues/new/choose) · [Ver pull requests](https://github.com/elpeakyblinder/security-skill/pulls) · [Reportar un problema de seguridad](SECURITY.md)
+
+Para problemas de comportamiento, aporta un caso sintético que permita entender la decisión incorrecta y la esperada. No incluyas secretos ni datos de clientes. Si el hallazgo expone un sistema real, utiliza el canal de [SECURITY.md](SECURITY.md).
 
 Antes de incorporar una aportación a una edición comercial, se deberán acordar con su titular los derechos necesarios. Enviar una propuesta no transfiere automáticamente su autoría ni concede una autorización comercial adicional.
+
+## Versiones
+
+La versión del contenido es **0.1.0**, registrada en [VERSION](VERSION). Consulta el [historial de cambios](CHANGELOG.md) y las [releases de GitHub](https://github.com/elpeakyblinder/security-skill/releases). Las etiquetas identifican revisiones concretas; `main` puede avanzar después. Un número de versión no es un sello de seguridad.
+
+La documentación está disponible en **español e inglés**; la skill instalable conserva sus instrucciones en español. Las traducciones nuevas se incorporan mediante PR cuando estén completas y revisadas.
 
 ## Licencia y uso comercial
 
