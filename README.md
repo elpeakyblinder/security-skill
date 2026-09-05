@@ -223,6 +223,8 @@ El material se proporciona **tal cual y según disponibilidad, sin garantías**,
 
 Los modelos pueden interpretar mal las instrucciones, omitir comprobaciones o ejecutar acciones inadecuadas. Revisa los cambios y resultados, limita los permisos del agente y utiliza pruebas aisladas y copias de seguridad según el riesgo. No ejecutes pruebas sobre sistemas ajenos sin autorización.
 
+**La responsabilidad de evaluar y decidir cómo se utiliza esta skill corresponde a la persona u organización que la emplea, dentro de su ámbito de actuación y control.** Esto incluye seleccionar y configurar el agente, delimitar sus permisos, revisar sus recomendaciones, validar las optimizaciones y los cambios propuestos, y decidir cuáles autoriza, ejecuta o despliega. Delegar tareas a un agente de IA no sustituye el criterio profesional ni la supervisión de quien lo utiliza. Esta declaración no atribuye automáticamente toda responsabilidad jurídica al usuario ni excluye responsabilidades del autor o de terceros que la ley no permita excluir.
+
 En la máxima medida permitida por la ley aplicable, el autor y los colaboradores excluyen su responsabilidad por daños o pérdidas derivados del uso o de la imposibilidad de uso de este material, incluidos pérdida de datos, interrupción de servicios, fallos de seguridad o consecuencias de acciones realizadas por agentes de IA. **Esta exclusión no se aplica cuando la ley no la permita** y no elimina derechos ni responsabilidades que no puedan excluirse legalmente.
 
 Este aviso acompaña a la licencia y no modifica sus términos ni impone restricciones adicionales a los derechos que concede. Ningún aviso de este repositorio debe interpretarse como una garantía de inmunidad jurídica para su autor, colaboradores o usuarios.
