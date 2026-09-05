@@ -12,18 +12,32 @@ Guía para **Guijosa Dev**. La carpeta está preparada para distribuirse como re
 
 ## Subir a GitHub
 
-1. Crea un repositorio. Nombre sugerido: **`security-regression-guard`**.
+1. El repositorio elegido es **[`elpeakyblinder/security-skill`](https://github.com/elpeakyblinder/security-skill)**.
 2. Descripción sugerida: **Skill generalista para revisar autorización, aislamiento de datos y regresiones de seguridad con agentes de IA. CC BY-NC 4.0.**
 3. Sube el **contenido** de esta carpeta a la raíz del repositorio: README, LICENSE, PUBLICAR, assets, skillSecurity.md y security-regression-guard. Evita añadir otra carpeta exterior que oculte el README.
 4. En la vista previa, comprueba la cabecera, las tablas, los desplegables, los enlaces relativos y el aviso al final. Abre también el archivo instalable.
-5. Sustituye en el ejemplo de atribución del README «añade el enlace al repositorio original» por la URL real. No hace falta inventar la URL antes de crear el repositorio.
+5. Comprueba que el enlace de atribución y los comandos de instalación del README apuntan a `elpeakyblinder/security-skill`. Actualízalos si cambia el propietario o el nombre del repositorio.
 6. Cuando hayas comprobado el paquete, crea una release con una etiqueta como **`v1.0.0`**, describiendo el alcance y lo validado realmente. El ZIP del código fuente permite descargarlo y seguir la instalación manual.
 
 GitHub mantiene guías oficiales para [crear repositorios](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository), [añadir archivos](https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository), [gestionar releases](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository) y [licenciar un repositorio](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository).
 
 ## Que otras personas puedan instalarla
 
-Comparte el enlace del repositorio o de la release. El README contiene las rutas de instalación local para Codex, Claude Code, Google Antigravity y Cursor. Basta con copiar la carpeta instalable a una ubicación reconocida por el agente.
+Una vez publicado el contenido, comparte este comando:
+
+```bash
+npx skills add elpeakyblinder/security-skill --skill security-regression-guard
+```
+
+Con pnpm:
+
+```bash
+pnpm dlx skills add elpeakyblinder/security-skill --skill security-regression-guard
+```
+
+El [CLI de Skills](https://www.skills.sh/docs/cli) obtiene el material de GitHub; no necesitas publicar un paquete propio ni pedir a cada usuario que clone el repositorio manualmente. Mantén `security-regression-guard/SKILL.md` con su cabecera `name` y `description`. Para comprobar su detección remota sin instalarlo, ejecuta `pnpm dlx skills add elpeakyblinder/security-skill --list` después del push. Esta comprobación no equivale a ejecutar la skill dentro de un agente.
+
+El README también contiene las rutas de copia manual para Codex, Claude Code, Google Antigravity y Cursor.
 
 Publicar en GitHub **no la registra automáticamente en los catálogos de los agentes**. Esa distribución es opcional y puede requerir otro formato de paquete y cumplir sus condiciones. La instalación manual documentada no depende de que un catálogo acepte el proyecto o su licencia no comercial.
 
