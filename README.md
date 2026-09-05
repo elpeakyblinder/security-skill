@@ -60,6 +60,40 @@ Los apartados se aplican **según el alcance de la tarea**. Corregir un cambio v
 
 ## Instalación
 
+### Con un comando
+
+Con los archivos publicados en GitHub, puedes instalarla desde la carpeta de tu proyecto usando el [CLI de Skills](https://www.skills.sh/docs/cli). Necesitas Node.js y Git disponibles:
+
+```bash
+npx skills add elpeakyblinder/security-skill --skill security-regression-guard
+```
+
+Si utilizas pnpm, el comando equivalente es:
+
+```bash
+pnpm dlx skills add elpeakyblinder/security-skill --skill security-regression-guard
+```
+
+El instalador descarga el material y permite elegir los agentes de destino. No necesitas clonar el repositorio manualmente. Esta skill no requiere un paquete propio en el registro de Node: `skills` es el instalador y `elpeakyblinder/security-skill` es el repositorio de origen.
+
+Para elegir un agente directamente, añade `--agent codex`, `--agent claude-code`, `--agent antigravity` o `--agent cursor`. Por ejemplo:
+
+```bash
+pnpm dlx skills add elpeakyblinder/security-skill --skill security-regression-guard --agent codex
+```
+
+Estos ejemplos instalan en el proyecto. El CLI admite `--global` para instalación personal; comprueba el destino que propone, porque algunas rutas globales del instalador pueden diferir de las de la versión actual de tu agente. Las ubicaciones manuales se indican abajo. Consulta las [opciones del instalador](https://github.com/vercel-labs/skills#options).
+
+Para consultar qué skills detecta sin instalarlas:
+
+```bash
+pnpm dlx skills add elpeakyblinder/security-skill --list
+```
+
+La descarga desde GitHub requiere que el repositorio ya contenga los archivos. Si todavía está vacío, primero debe publicarse el commit inicial. La instalación no modifica las condiciones de [uso no comercial y permisos comerciales separados](#licencia-y-uso-comercial).
+
+### Instalación manual
+
 Descarga el repositorio como ZIP o clónalo y lee sus instrucciones. Después, copia la carpeta **`security-regression-guard` completa** en una de estas ubicaciones del proyecto donde vayas a usarla:
 
 | Agente | Ubicación dentro de tu proyecto | Documentación oficial |
@@ -177,7 +211,7 @@ Esta licencia se refiere al material protegible del repositorio; no reclama prop
 
 Una forma de atribución que puedes adaptar al medio:
 
-> Security Regression Guard, de Guijosa Dev (2026). CC BY-NC 4.0: https://creativecommons.org/licenses/by-nc/4.0/. Fuente: añade el enlace al repositorio original. Cambios: indica los realizados, si los hay. Material sin garantías; conserva el aviso de responsabilidad aplicable.
+> Security Regression Guard, de Guijosa Dev (2026). [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/). Fuente: [repositorio original](https://github.com/elpeakyblinder/security-skill). Cambios: indica los realizados, si los hay. Material sin garantías; conserva el aviso de responsabilidad aplicable.
 
 ---
 
