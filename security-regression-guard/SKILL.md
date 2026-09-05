@@ -1,6 +1,8 @@
 ---
 name: security-regression-guard
 license: CC-BY-NC-4.0
+metadata:
+  version: "0.1.0"
 description: Revisa y refuerza autorización, aislamiento de datos, sesiones, archivos y límites de consumo en aplicaciones web y APIs, incluyendo sus clientes móviles. Úsala al auditar seguridad o cambiar estas fronteras. Incluye pruebas de peticiones directas, rutas alternativas y fallos parciales; no convierte un cambio visual ordinario en una auditoría completa.
 ---
 
