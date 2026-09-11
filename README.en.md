@@ -21,7 +21,7 @@
 
 <p align="center">
   <a href="#why-it-exists">Why it exists</a> · <a href="#installation">Install</a> ·
-  <a href="#usage">Usage</a> · <a href="#contributing">Contribute</a> ·
+  <a href="#usage">Usage</a> · <a href="#real-world-case-study">Case study</a> · <a href="#contributing">Contribute</a> ·
   <a href="#versions-and-languages">Versions</a> · <a href="#license-and-commercial-use">License</a> ·
   <a href="#disclaimer">Disclaimer</a>
 </p>
@@ -167,12 +167,30 @@ Do not expand the scope without a concrete reason.
 ```
 
 Installing the skill does not grant additional permissions or authorize live migrations, deployments, key rotations or changes to real accounts. English prompts can refer to the Spanish skill; that is not a claim of equivalent results across languages or models.
+<a id="real-world-case-study"></a>
+## Real-world case study: practical validation
+
+To evaluate the skill in a real workflow, an AI development agent (**Google Antigravity**, extended reasoning model) was monitored while implementing a **shift rotations** feature in a multi-tenant Laravel application.
+
+### Observed workflow
+
+1. **Initial functional generation:** The agent created migrations, Eloquent models, cyclic interval resolution logic, controllers, and views. The implementation executed correctly for valid inputs and passed initial integration tests.
+2. **Skill invocation:** Upon requesting a review via `/security-regression-guard`, the agent traced endpoints, authorization checks, tenant boundaries, and input constraints.
+3. **Omissions identified and resolved:**
+   - **Missing read authorization:** The timeline preview route omitted checking the `schedules` permission.
+   - **Cross-tenant resource enumeration (IDOR):** Returning `403` for another tenant's records allowed distinguishing existing resources from non-existent ones (`404`). The rejection was unified to `404`.
+   - **Unbounded input list (DoS):** The rotation steps array accepted arbitrary lengths. It was capped at 20 steps, with numerical duration bounds enforced.
+   - **Out-of-range initial step:** The starting step parameter permitted values exceeding the number of configured rotation steps.
+4. **Anti-regression behavior tests:** The agent added 11 automated tests verifying rejection without side effects (`403`, `404`, `422`) alongside the authorized execution path.
+
+See the detailed report with technical traces, code diffs, and test definitions: [Shift rotations case study](examples/case-study-shift-rotations.md) · [Caso de estudio: rotaciones de turno (es)](examples/caso-estudio-rotacion-turnos.md).
 
 ## Repository contents
 
 | File or folder | Purpose |
 | --- | --- |
 | `README.md` / `README.en.md` | Spanish reference documentation and English translation |
+| `examples/` | Practical validation case studies in Spanish and English |
 | `security-regression-guard/SKILL.md` | Canonical, installable instructions |
 | `skillSecurity.md` | Identical standalone reading copy |
 | `CONTRIBUTING.md` | Contribution workflow and licensing of submissions |

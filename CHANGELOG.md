@@ -4,7 +4,12 @@ Los números identifican versiones del contenido; no representan una certificaci
 
 ## Sin publicar / Unreleased
 
-Sin cambios adicionales registrados. / No additional changes recorded.
+### Añadido / Added
+
+- Caso de estudio real de validación práctica (`examples/caso-estudio-rotacion-turnos.md` y `examples/case-study-shift-rotations.md`), documentando la detección y corrección de 4 vulnerabilidades críticas en un módulo empresarial multi-tenant con un agente de IA.
+- Enlaces y secciones de caso de estudio en `README.md` y `README.en.md`.
+
+English summary: added practical validation case study documenting 4 real vulnerabilities caught and remediated in a multi-tenant enterprise module using an AI agent.
 
 ## 0.1.0 — 2026-09-05
 

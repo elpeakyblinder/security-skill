@@ -26,6 +26,7 @@
   <a href="#por-qué-existe">Por qué existe</a> ·
   <a href="#instalación">Instalación</a> ·
   <a href="#cómo-usarla">Uso</a> ·
+  <a href="#caso-de-estudio-real">Caso de estudio</a> ·
   <a href="CONTRIBUTING.md">Contribuir</a> ·
   <a href="#versiones">Versiones</a> ·
   <a href="#licencia-y-uso-comercial">Licencia</a> ·
@@ -183,6 +184,24 @@ en el entorno de despliegue. No amplíes el alcance sin un motivo concreto.
 
 Los ejemplos delimitan tareas distintas. Instalar esta skill no concede permisos adicionales al agente ni autoriza por sí mismo migraciones, despliegues, rotaciones de claves o cambios en cuentas reales.
 
+<a id="caso-de-estudio-real"></a>
+## Caso de estudio real: validación práctica
+
+Para evaluar la skill en un flujo de trabajo real, se contrastó el comportamiento de un agente de desarrollo (**Google Antigravity**, modelo con razonamiento extendido) durante la implementación de un módulo de **turnos rotativos** en una aplicación multi-tenant basada en Laravel.
+
+### Secuencia observada
+
+1. **Generación funcional inicial:** El agente implementó migraciones, modelos, resolución matemática de ciclos, controladores y vistas. El código ejecutaba correctamente el flujo previsto y superaba pruebas de integración centradas en casos válidos.
+2. **Invocación de la skill:** Al solicitar la revisión con `/security-regression-guard`, el agente trazó rutas, autorizaciones, fronteras entre organizaciones y restricciones de entrada.
+3. **Omisiones detectadas y corregidas:**
+   - **Autorización ausente en consulta:** La previsualización de secuencias omitía verificar el permiso de horarios (`schedules`).
+   - **Enumeración de recursos entre organizaciones (IDOR):** Devolver `403` ante registros ajenos permitía inferir su existencia frente a identificadores inexistentes (`404`). Se unificó el rechazo en `404`.
+   - **Entrada no acotada (DoS):** La lista de turnos admitía un número arbitrario de registros sin límite superior. Se restringió a 20 pasos y se validaron rangos de duración.
+   - **Inconsistencia en parámetros de asignación:** El paso inicial admitía valores fuera del rango de turnos configurados.
+4. **Pruebas de comportamiento y anti-regresión:** El agente añadió 11 pruebas automatizadas que comprueban tanto el rechazo sin efectos secundarios (`403`, `404`, `422`) como el funcionamiento del caso autorizado.
+
+Consulta el documento detallado con traza técnica, código corregido y batería de pruebas: [Caso de estudio: rotaciones de turno](examples/caso-estudio-rotacion-turnos.md) · [Shift rotations case study (en)](examples/case-study-shift-rotations.md).
+
 ## Contenido del repositorio
 
 ```text
@@ -199,6 +218,9 @@ Los ejemplos delimitan tareas distintas. Instalar esta skill no concede permisos
 ├── assets/
 │   ├── banner.svg                     Cabecera en español
 │   └── banner.en.svg                  English banner
+├── examples/
+│   ├── caso-estudio-rotacion-turnos.md Caso real en español (Laravel multi-tenant)
+│   └── case-study-shift-rotations.md   Real-world case study in English
 ├── skillSecurity.md                   Copia de lectura independiente
 └── security-regression-guard/
     └── SKILL.md                       Fuente principal y archivo instalable
