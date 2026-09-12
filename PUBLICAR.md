@@ -9,6 +9,7 @@ Guía para **Guijosa Dev**. La carpeta está preparada para distribuirse como re
 - La licencia elegida es **CC BY-NC 4.0**, con permisos comerciales por separado. No la sustituyas por MIT o Apache al crear el repositorio: cambiaría el esquema que elegiste.
 - Revisa los términos con un profesional jurídico antes de depender de ellos para limitar responsabilidad o vender permisos. Un disclaimer no asegura que no puedan reclamarte ni concede inmunidad penal.
 - Comprueba que el paquete no contiene datos reales de los proyectos, secretos ni archivos de configuración privados.
+- Ejecuta `node --test tests/skill.test.mjs` y corrige cualquier incoherencia antes de publicar.
 
 ## Subir a GitHub
 

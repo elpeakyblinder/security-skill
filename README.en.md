@@ -8,6 +8,7 @@
   <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-0.1.0-16745b" alt="Content version: 0.1.0"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-CC_BY--NC_4.0-315a78" alt="CC BY-NC 4.0 license"></a>
   <a href="CONTRIBUTING.md"><img src="https://img.shields.io/badge/contributions-welcome-785a30" alt="Contributions welcome"></a>
+  <a href="tests/skill.test.mjs"><img src="https://img.shields.io/badge/tests-8_passing-16745b" alt="8 passing tests"></a>
 </p>
 
 <p align="center"><a href="README.md" lang="es">Español</a> · <strong>English</strong></p>
@@ -21,7 +22,8 @@
 
 <p align="center">
   <a href="#why-it-exists">Why it exists</a> · <a href="#installation">Install</a> ·
-  <a href="#usage">Usage</a> · <a href="#real-world-case-study">Case study</a> · <a href="#contributing">Contribute</a> ·
+  <a href="#usage">Usage</a> · <a href="#real-world-case-study">Case study</a> ·
+  <a href="#repository-validation">Validation</a> · <a href="#contributing">Contribute</a> ·
   <a href="#versions-and-languages">Versions</a> · <a href="#license-and-commercial-use">License</a> ·
   <a href="#disclaimer">Disclaimer</a>
 </p>
@@ -200,8 +202,19 @@ See the detailed report with technical traces, code diffs, and test definitions:
 | `LICENSE` | Official CC BY-NC 4.0 legal text |
 | `PUBLICAR.md` | Maintainer's publication guide, in Spanish |
 | `assets/` | README artwork |
+| `tests/skill.test.mjs` | Automated repository package validation |
 
 Keep both instruction copies in sync. Do not install them as separate skills.
+
+## Repository validation
+
+The local suite checks that the installable folder is self-contained, internal links resolve, both instruction copies remain identical, and the version, frontmatter, banners and documentation preserve their invariants.
+
+```bash
+node --test tests/skill.test.mjs
+```
+
+These tests validate repository packaging and consistency. They do not prove that a model will follow the skill correctly or certify the security of any project where it is used.
 
 ## Contributing
 
