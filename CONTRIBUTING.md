@@ -20,7 +20,7 @@ Aceptamos issues y PR en **español o inglés**. / **Issues and pull requests in
 2. Crea un fork en tu cuenta y una rama para tu cambio. Puedes usar el editor web de GitHub para correcciones pequeñas; clonar es opcional.
 3. Mantén la propuesta centrada en un problema. No conviertas la regla de un proyecto particular en una obligación para todos.
 4. Si cambias instrucciones, edita `security-regression-guard/SKILL.md` y sincroniza `skillSecurity.md`. Ambas copias deben conservar el mismo contenido.
-5. Actualiza la documentación afectada y sus traducciones. Añade cambios de comportamiento a la sección «Sin publicar» de [CHANGELOG.md](CHANGELOG.md). Una errata no necesita una batería de pruebas.
+5. Actualiza la documentación afectada y sus traducciones. Añade cambios de comportamiento a la sección «Sin publicar» de [CHANGELOG.md](CHANGELOG.md). Ejecuta `node --test tests/skill.test.mjs` cuando el cambio afecte al paquete, enlaces, portadas, versión o instrucciones. Una errata no necesita una batería de pruebas adicional.
 6. Abre la PR contra `main`, completa la plantilla y responde a la revisión. Guijosa Dev decide qué se integra; enviar una PR no garantiza su aceptación ni un plazo de respuesta.
 
 No necesitas instalar la skill globalmente para contribuir. Los cambios de versión y las etiquetas los prepara el mantenedor al publicar.

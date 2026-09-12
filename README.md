@@ -8,6 +8,7 @@
   <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-0.1.0-16745b" alt="Versión del contenido: 0.1.0"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-CC_BY--NC_4.0-315a78" alt="Licencia CC BY-NC 4.0"></a>
   <a href="CONTRIBUTING.md"><img src="https://img.shields.io/badge/contributions-welcome-785a30" alt="Contribuciones bienvenidas"></a>
+  <a href="tests/skill.test.mjs"><img src="https://img.shields.io/badge/tests-8_passing-16745b" alt="8 pruebas aprobadas"></a>
 </p>
 
 <p align="center"><strong>Español</strong> · <a href="README.en.md" lang="en">English</a></p>
@@ -27,6 +28,7 @@
   <a href="#instalación">Instalación</a> ·
   <a href="#cómo-usarla">Uso</a> ·
   <a href="#caso-de-estudio-real">Caso de estudio</a> ·
+  <a href="#validación-del-repositorio">Validación</a> ·
   <a href="CONTRIBUTING.md">Contribuir</a> ·
   <a href="#versiones">Versiones</a> ·
   <a href="#licencia-y-uso-comercial">Licencia</a> ·
@@ -221,12 +223,24 @@ Consulta el documento detallado con traza técnica, código corregido y batería
 ├── examples/
 │   ├── caso-estudio-rotacion-turnos.md Caso real en español (Laravel multi-tenant)
 │   └── case-study-shift-rotations.md   Real-world case study in English
+├── tests/
+│   └── skill.test.mjs                 Validación automatizada del paquete
 ├── skillSecurity.md                   Copia de lectura independiente
 └── security-regression-guard/
     └── SKILL.md                       Fuente principal y archivo instalable
 ```
 
 La fuente principal es **[`security-regression-guard/SKILL.md`](security-regression-guard/SKILL.md)**. [`skillSecurity.md`](skillSecurity.md) conserva el mismo contenido para lectura independiente. Si modificas las instrucciones, actualiza ambas copias; no instales las dos como skills diferentes.
+
+## Validación del repositorio
+
+La suite local comprueba que la carpeta instalable sea autocontenida, que los enlaces internos resuelvan, que ambas copias de las instrucciones sigan idénticas y que versión, frontmatter, portadas y documentación conserven sus invariantes.
+
+```bash
+node --test tests/skill.test.mjs
+```
+
+Estas pruebas validan el empaquetado y la coherencia del repositorio. No demuestran que un modelo vaya a seguir correctamente la skill ni certifican la seguridad de un proyecto donde se utilice.
 
 ## Aportaciones
 
