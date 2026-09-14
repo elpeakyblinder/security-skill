@@ -202,7 +202,9 @@ Para evaluar la skill en un flujo de trabajo real, se contrastó el comportamien
    - **Inconsistencia en parámetros de asignación:** El paso inicial admitía valores fuera del rango de turnos configurados.
 4. **Pruebas de comportamiento y anti-regresión:** El agente añadió 11 pruebas automatizadas que comprueban tanto el rechazo sin efectos secundarios (`403`, `404`, `422`) como el funcionamiento del caso autorizado.
 
-Consulta el documento detallado con traza técnica, código corregido y batería de pruebas: [Caso de estudio: rotaciones de turno](examples/caso-estudio-rotacion-turnos.md) · [Shift rotations case study (en)](examples/case-study-shift-rotations.md).
+Casos de estudio detallados con traza técnica, código corregido y batería de pruebas:
+- **Módulo de turnos rotativos (Laravel multi-tenant):** [Caso de estudio: rotaciones de turno](examples/caso-estudio-rotacion-turnos.md) · [Shift rotations case study (en)](examples/case-study-shift-rotations.md).
+- **Autenticación y control de roles (Python/PyQt6 POS desktop):** [Caso de estudio: autenticación POS](examples/caso-estudio-autenticacion-pos.md) · [POS authentication case study (en)](examples/case-study-pos-authentication.md).
 
 ## Contenido del repositorio
 
@@ -221,8 +223,10 @@ Consulta el documento detallado con traza técnica, código corregido y batería
 │   ├── banner.svg                     Cabecera en español
 │   └── banner.en.svg                  English banner
 ├── examples/
-│   ├── caso-estudio-rotacion-turnos.md Caso real en español (Laravel multi-tenant)
-│   └── case-study-shift-rotations.md   Real-world case study in English
+│   ├── caso-estudio-rotacion-turnos.md    Caso real en español (Laravel multi-tenant)
+│   ├── case-study-shift-rotations.md      Real-world case study in English
+│   ├── caso-estudio-autenticacion-pos.md  Caso real en español (Python/PyQt6 POS desktop)
+│   └── case-study-pos-authentication.md   Real-world case study in English
 ├── tests/
 │   └── skill.test.mjs                 Validación automatizada del paquete
 ├── skillSecurity.md                   Copia de lectura independiente
