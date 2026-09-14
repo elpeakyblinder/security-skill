@@ -185,7 +185,9 @@ To evaluate the skill in a real workflow, an AI development agent (**Google Anti
    - **Out-of-range initial step:** The starting step parameter permitted values exceeding the number of configured rotation steps.
 4. **Anti-regression behavior tests:** The agent added 11 automated tests verifying rejection without side effects (`403`, `404`, `422`) alongside the authorized execution path.
 
-See the detailed report with technical traces, code diffs, and test definitions: [Shift rotations case study](examples/case-study-shift-rotations.md) · [Caso de estudio: rotaciones de turno (es)](examples/caso-estudio-rotacion-turnos.md).
+Detailed case studies with technical traces, remediated code diffs, and test suites:
+- **Shift rotations module (multi-tenant Laravel):** [Shift rotations case study](examples/case-study-shift-rotations.md) · [Caso de estudio: rotaciones de turno (es)](examples/caso-estudio-rotacion-turnos.md).
+- **Authentication and role authorization (Python/PyQt6 POS desktop):** [POS authentication case study](examples/case-study-pos-authentication.md) · [Caso de estudio: autenticación POS (es)](examples/caso-estudio-autenticacion-pos.md).
 
 ## Repository contents
 
