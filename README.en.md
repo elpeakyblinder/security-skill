@@ -188,6 +188,7 @@ To evaluate the skill in a real workflow, an AI development agent (**Google Anti
 Detailed case studies with technical traces, remediated code diffs, and test suites:
 - **Shift rotations module (multi-tenant Laravel):** [Shift rotations case study](examples/case-study-shift-rotations.md) · [Caso de estudio: rotaciones de turno (es)](examples/caso-estudio-rotacion-turnos.md).
 - **Authentication, session lifecycle, and role access control (Python/PyQt6 desktop POS):** [POS authentication and session case study](examples/case-study-pos-authentication.md) · [Caso de estudio: autenticación y sesión POS (es)](examples/caso-estudio-autenticacion-pos.md).
+- **AI chatbot and transactional workflow (Astro/TypeScript/Groq/Resend):** [AI chatbot case study](examples/case-study-ai-chatbot.md) · [Caso de estudio: chatbot con IA (es)](examples/caso-estudio-chatbot-ia.md).
 
 ## Repository contents
 

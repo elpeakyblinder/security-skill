@@ -205,6 +205,7 @@ Para evaluar la skill en un flujo de trabajo real, se contrastó el comportamien
 Casos de estudio detallados con traza técnica, código corregido y batería de pruebas:
 - **Módulo de turnos rotativos (Laravel multi-tenant):** [Caso de estudio: rotaciones de turno](examples/caso-estudio-rotacion-turnos.md) · [Shift rotations case study (en)](examples/case-study-shift-rotations.md).
 - **Autenticación, ciclo de sesión y control de acceso (Python/PyQt6 POS desktop):** [Caso de estudio: autenticación y sesión POS](examples/caso-estudio-autenticacion-pos.md) · [POS authentication and session case study (en)](examples/case-study-pos-authentication.md).
+- **Chatbot asistido por IA y flujo transaccional (Astro/TypeScript/Groq/Resend):** [Caso de estudio: chatbot con IA](examples/caso-estudio-chatbot-ia.md) · [AI chatbot case study (en)](examples/case-study-ai-chatbot.md).
 
 ## Contenido del repositorio
 
@@ -226,7 +227,9 @@ Casos de estudio detallados con traza técnica, código corregido y batería de 
 │   ├── caso-estudio-rotacion-turnos.md    Caso real en español (Laravel multi-tenant)
 │   ├── case-study-shift-rotations.md      Real-world case study in English
 │   ├── caso-estudio-autenticacion-pos.md  Caso real en español (Python/PyQt6 POS desktop)
-│   └── case-study-pos-authentication.md   Real-world case study in English
+│   ├── case-study-pos-authentication.md   Real-world case study in English
+│   ├── caso-estudio-chatbot-ia.md         Caso real en español (Chatbot IA transaccional)
+│   └── case-study-ai-chatbot.md           Real-world case study in English
 ├── tests/
 │   └── skill.test.mjs                 Validación automatizada del paquete
 ├── skillSecurity.md                   Copia de lectura independiente
