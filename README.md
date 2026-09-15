@@ -204,7 +204,7 @@ Para evaluar la skill en un flujo de trabajo real, se contrastó el comportamien
 
 Casos de estudio detallados con traza técnica, código corregido y batería de pruebas:
 - **Módulo de turnos rotativos (Laravel multi-tenant):** [Caso de estudio: rotaciones de turno](examples/caso-estudio-rotacion-turnos.md) · [Shift rotations case study (en)](examples/case-study-shift-rotations.md).
-- **Autenticación y control de roles (Python/PyQt6 POS desktop):** [Caso de estudio: autenticación POS](examples/caso-estudio-autenticacion-pos.md) · [POS authentication case study (en)](examples/case-study-pos-authentication.md).
+- **Autenticación, ciclo de sesión y control de acceso (Python/PyQt6 POS desktop):** [Caso de estudio: autenticación y sesión POS](examples/caso-estudio-autenticacion-pos.md) · [POS authentication and session case study (en)](examples/case-study-pos-authentication.md).
 
 ## Contenido del repositorio
 
