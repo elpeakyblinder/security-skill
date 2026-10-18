@@ -47,7 +47,7 @@ Busca con `rg` los nombres de ruta, métodos, llamadas al servicio y nombres de 
 
 Incluye API REST o GraphQL, Server Actions y funciones RPC exportadas al cliente, formularios AJAX, exportaciones, descargas, acciones masivas, webhooks, rutas antiguas, subventanas de escritorio y trabajos en segundo plano que ejecuten la misma operación. Un nombre como `admin`, `update`, `validate` o `authorize` no demuestra qué comprueba su implementación.
 
-No clasifiques una operación por su nombre o método HTTP: `calculate`, `preview`, `refresh` o `recalculate` pueden guardar resultados, crear revisiones o reemplazar relaciones. Separa el cálculo público de la persistencia protegida cuando tengan permisos diferentes. Comprueba también los efectos que ocurren después de construir la respuesta.
+No clasifiques una operación por su nombre o método HTTP: `calculate`, `preview`, `refresh`, `recalculate` o una ruta `GET` de listado que inicializa periodos o sincroniza catálogos al vuelo pueden guardar resultados, crear revisiones o reemplazar relaciones. Separa la lectura o el cálculo de la persistencia protegida: una ruta de consulta no debe disparar escrituras automáticas cuando el actor es de solo lectura. Comprueba también los efectos que ocurren después de construir la respuesta.
 
 Antes de cada efecto sensible deben quedar comprobados actor, capacidad y alcance. Si hay varios controladores o entradas que realizan el mismo cambio, comparte la regla en una política, guard o servicio adecuado; no confíes en que todos recuerden repetirla.
 
@@ -110,9 +110,10 @@ Adapta estas comprobaciones al modelo existente: roles (RBAC), atributos/context
 - Que dos IDs existan no demuestra que puedan relacionarse. En una ruta de recurso y comentario, verifica que el comentario pertenece a ese recurso; aplica lo mismo a respuestas, reacciones, revisiones, horarios asignados y adjuntos.
 - Deriva la propiedad desde la identidad del servidor. Si falta autor en registros heredados, no asignes al solicitante ni permitas escribir por defecto; usa la política de recuperación o moderación existente.
 - Respalda invariantes relevantes con claves foráneas, unicidad y restricciones de dominio cuando el motor lo permita. Una clave foránea simple no asegura que padre e hijo pertenezcan al mismo recurso o empresa; puede requerirse una relación compuesta.
-- Usa consultas parametrizadas. Valida además tipos, rangos, unidades, longitud, límites de colecciones y campos editables: parametrizar no evita una asignación masiva ni un valor que desborde el cálculo o la columna.
+- Usa consultas parametrizadas y listas blancas de campos editables. En motores documentales o NoSQL (como MongoDB), escapa metacaracteres antes de construir filtros `$regex` con texto del usuario para evitar ReDoS o alteración de predicados, y nunca pases el cuerpo de la petición directo a operadores de actualización. Valida además tipos, rangos, unidades, longitud y límites de colecciones: parametrizar no evita una asignación masiva ni un valor que desborde el cálculo o la columna.
 - Agrupa escrituras dependientes en una transacción real del driver: cuenta/perfil/sesión, recurso/revisión/detalles o reemplazo de un plan. Varias llamadas consecutivas o un lote no garantizan atomicidad. Inyecta un fallo intermedio y comprueba que no queda estado parcial.
 - Previene condiciones de carrera (*Time-of-Check to Time-of-Use*, TOCTOU) en cupos, saldos, asientos de licencia, invitaciones o cupones de uso único y transiciones de estado (`pending -> approved`). Comprobar con un `SELECT` en la aplicación y escribir después sin resguardo permite que peticiones simultáneas superen el límite; utiliza actualizaciones condicionales atómicas (`UPDATE ... WHERE`), bloqueos de fila (`SELECT ... FOR UPDATE`) o restricciones únicas.
+- Protege la inmutabilidad de estados cerrados o históricos (periodos aprobados, nóminas pagadas, cortes cerrados, facturas emitidas). Cuando una edición en un catálogo maestro (como renombrar una cuenta o actualizar una regla) propague cambios mediante actualizaciones masivas (`updateMany`), acota el filtro exclusivamente a registros en borrador o abiertos (`status = 'draft'`), evitando reescribir evidencia contable o histórica ya aprobada.
 - Antes de añadir restricciones a una base existente, identifica duplicados y referencias incompatibles con consultas de diagnóstico. Prueba la cadena de migraciones desde cero y la actualización de un esquema anterior con datos sintéticos; incluye extensiones requeridas. No reescribas migraciones ya aplicadas como única reparación.
 
 ## 4. Operaciones sensibles, automatización, IA y canales externos
@@ -145,7 +146,7 @@ En un terminal compartido (reloj de asistencia, punto de venta POS, kiosco) o en
 - Los CSV de importación pueden leerse desde el temporal validado. Aplica límites de filas y columnas antes de procesarlos masivamente. No realices importaciones reales como prueba de autorización.
 - Genera exportaciones por solicitud o en almacenamiento privado con acceso autorizado. No uses un archivo público compartido que otra cuenta pueda descargar.
 - Usa un escritor CSV correcto y neutraliza fórmulas según el formato de destino. Prueba separadores, comillas, saltos de línea y valores que una hoja de cálculo interpretaría como fórmula.
-- Trata texto importado como no confiable. Usa escape del contexto o APIs de texto al renderizar HTML; una base de datos no convierte los datos en contenido seguro.
+- Trata texto importado o almacenado como no confiable. Usa escape del contexto o APIs de texto al renderizar HTML, incluidas ventanas emergentes de impresión o previsualización generadas en el cliente con `document.write` (escapa títulos y encabezados y valida que factores de escala o estilos interpolados sean numéricos finitos); una base de datos no convierte los datos en contenido seguro.
 
 ### Imágenes y almacenamiento de objetos
 
@@ -177,7 +178,7 @@ En un terminal compartido (reloj de asistencia, punto de venta POS, kiosco) o en
 ### Consumo, transporte y configuración de la API
 
 - Acota el cuerpo real antes del parseo, incluidos streams sin `Content-Length`; no confíes solo en el tamaño declarado. Define límites apropiados para JSON y multipart, cantidad de elementos, paginación y resultados. Limita también el costo de cálculos públicos, sondas de disponibilidad (`/health`, `/ready`) que abren conexiones o transacciones y rutas que invocan APIs externas de pago por uso (*Denial of Wallet*).
-- Aplica límites de intentos antes del trabajo caro, por IP y por cuenta cuando corresponda; tras autenticar, considera límites por usuario para escrituras, subidas y envíos externos. Evita almacenar identificadores personales en claro en las claves cuando no sea necesario y acota el número máximo de cubos en memoria con limpieza de ventanas vencidas. Evalúa abuso del bloqueo de cuentas y usuarios que comparten IP.
+- Aplica límites de intentos antes del trabajo caro, por IP y por cuenta cuando corresponda; tras autenticar, considera límites por usuario para escrituras, subidas y envíos externos. Evita almacenar identificadores personales en claro en las claves cuando no sea necesario y acota el número máximo de cubos en memoria con limpieza de ventanas vencidas. Al acotar un `Map` en memoria, evalúa primero la llave gruesa (`ip`) antes de insertar llaves compuestas (`ip:usuario`), actualiza el orden de acceso (LRU) y nunca desalojes cubos con bloqueo activo (`blockedUntil > now`) antes que cubos sin bloqueo; de lo contrario, una misma IP puede inundar el limitador con usuarios ficticios para expulsar por FIFO su propio bloqueo. Evalúa abuso del bloqueo de cuentas y usuarios que comparten IP.
 - Obtén la IP únicamente desde el salto o proxy de plataforma de confianza (tras validar llave de gateway o cabecera garantizada por el proveedor), no desde cualquier encabezado `X-Forwarded-For` o `CF-Connecting-IP` elegido por el cliente en llamadas directas. Comprueba si los contadores son por proceso, región o globales: un limitador local en memoria no impone una cuota global entre instancias serverless.
 - Si falta o falla una dependencia de protección requerida en producción, impide la operación protegida y devuelve un error controlado. Un modo local sin esa dependencia debe ser explícito; configuración ausente o desconocida no debe activar excepciones de desarrollo.
 - Configura CORS por orígenes completos y métodos/cabeceras necesarios. Compara esquema, host y puerto correctamente; `localhost.ejemplo.com` no es loopback. CORS regula al navegador, no autentica ni impide llamadas directas.
@@ -204,11 +205,12 @@ Para cada frontera modificada, reproduce una operación real con datos sintétic
 | Formato inválido o fallo durante un reemplazo de permisos | No borra la configuración anterior |
 | Operación sensible sin contraseña/CSRF/token exigidos | Rechazo antes de efectos; probar también el caso válido |
 | Cálculo público frente a recálculo persistido | Lectura permitida según política; escritura rechazada sin capacidad sobre el objeto, con caso permitido de autor/moderación si corresponde |
+| Efecto secundario en `GET` o propagación de catálogo sobre registros cerrados | El actor de consulta no dispara escrituras al listar; editar un catálogo solo actualiza borradores y deja intactos los periodos aprobados/pagados |
 | IDs válidos de recursos distintos en comentario/reacción/adjunto | Rechazo y relaciones intactas |
 | Peticiones concurrentes sobre cupo, saldo o transición única (TOCTOU) | Sin doble ejecución ni desbordamiento del límite; estado final consistente |
 | Fallo intermedio en base o bucket | Sin estado parcial; referencia y archivo anterior recuperables según el flujo |
 | Cuerpo excesivo, colección enorme o archivo truncado con firma válida | Rechazo antes del trabajo caro o almacenamiento |
-| Límite de intentos rotando cabeceras de IP en llamada directa | El limitador no abre cubos nuevos por cabeceras controladas por el cliente |
+| Límite de intentos rotando cabeceras de IP o inundando usuarios falsos desde la misma IP | El limitador no abre cubos por cabeceras del cliente ni desaloja el bloqueo activo de la IP al llenarse el mapa |
 | Endpoint de IA con rol `system` inyectado o salida transaccional inválida | Se ignora el rol privilegiado y se validan límites/cuotas antes de efectos externos |
 | Webhook con firma inválida, cuerpo alterado o evento repetido | Rechazo sin efectos ante firma inválida; ejecución única ante reintento |
 | Foto válida con metadatos sensibles | Objeto realmente almacenado sin esos metadatos y todavía decodificable |
@@ -235,7 +237,7 @@ Revisa configuración y dependencias locales si forman parte del alcance, aunque
 
 - Audita los lockfiles y usa fuentes oficiales para avisos actuales. Registra cuándo y qué se comprobó; cero avisos hoy no garantiza cero vulnerabilidades.
 - Comprueba dominio real, TLS, cookies, hosts/proxies confiables y acceso directo al origen o función serverless sin pasar por el Worker/gateway. No confíes indiscriminadamente en encabezados reenviados por el cliente.
-- Sirve solo el directorio público; evita exponer `.env`, Git, dumps y archivos privados. Impide ejecutar subidas como scripts.
+- Sirve solo el directorio público compilado; evita exponer `.env`, Git, dumps, mapas de código (`.map`) y archivos privados, e impide ejecutar subidas como scripts. No almacenes catálogos reales, semillas de migración ni datos sensibles dentro del árbol de código del frontend (`src/`) ni concedas al runtime del backend permisos de lectura (`--allow-read`) hacia el directorio del cliente. No expongas servidores de desarrollo (`webpack-dev-server`, `vite dev`) detrás de túneles públicos: sirve un build de producción sin sourcemaps.
 - Con varias instancias, revisa coherencia de sesiones, revocaciones, límites de intentos, caché, archivos y bloqueos de jobs. Documenta explícitamente cuando una mitigación en memoria aplique solo por instancia y no de forma global. No supongas que dos bases se sincronizan solas.
 - No cambies una clave de cifrado existente para satisfacer un checklist: puede inutilizar sesiones, datos o credenciales cifradas. Separa reparación, rotación y despliegue según el alcance autorizado.
 - Al cambiar dependencias de seguridad, comprueba compatibilidad y compilación del destino real. Un paquete más reciente no garantiza que el SDK o runtime del proyecto lo soporte. Evita actualizaciones forzadas que rompan el producto; documenta incompatibilidades verificadas.
@@ -259,9 +261,11 @@ Usa los antecedentes como casos de prueba y adapta el dominio:
 | Rutas antiguas, reportes y terminales usaban referencias incompletas | Entrada segura compartida y alcance canónico de persona/empresa |
 | Responder 403 ante recursos de otra empresa permitía enumerar IDs | Consulta acotada por organización y rechazo indistinguible (`404` según contrato) |
 | Un recálculo accesible sin sesión persistía resultados | Clasificar por efectos y comprobar autor/capacidad antes de escribir |
+| Editar una etiqueta de catálogo reescribía periodos cerrados y `GET` creaba registros | Filtrar propagaciones solo a estado `draft`, exigir capacidad de escritura para efectos colaterales y sacar semillas reales del frontend |
 | Un comentario o reacción aceptaba IDs de otro recurso | Validar pertenencia conjunta y respaldar la relación en la base |
 | Peticiones simultáneas superaban un cupo o aplicaban dos veces un cambio | Actualización condicional atómica, bloqueo de fila o restricción única (anti-TOCTOU) |
 | El limitador de login confiaba en cabeceras de IP elegidas por el cliente | Dirección tomada solo del salto de confianza y mapa de cubos acotado |
+| Inundar el login con usuarios falsos expulsaba del `Map` el bloqueo de la IP | Evaluar la IP antes de crear cubos `ip:usuario`, orden LRU y preservar cubos con bloqueo activo al desalojar |
 | Logout, baja de cuenta o rotación de clave dejaban vivos accesos abiertos | Revocación en servidor, validación de estado activo en caliente y cierre de vistas |
 | Un chatbot aceptaba `role: system` y enviaba correos sin cuota ni filtro | Filtrado de roles, paridad de validación a la salida del LLM, rate-limit y limpieza CRLF |
 | La API enviaba CSP pero el Worker servía el HTML de la SPA sin cabeceras | Cabeceras de seguridad aplicadas en el origen que entrega el HTML al navegador |
