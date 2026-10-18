@@ -207,6 +207,7 @@ Casos de estudio detallados con traza técnica, código corregido y batería de 
 - **Autenticación, ciclo de sesión y control de acceso (Python/PyQt6 POS desktop):** [Caso de estudio: autenticación y sesión POS](examples/caso-estudio-autenticacion-pos.md) · [POS authentication and session case study (en)](examples/case-study-pos-authentication.md).
 - **Chatbot asistido por IA y flujo transaccional (Astro/TypeScript/Groq/Resend):** [Caso de estudio: chatbot con IA](examples/caso-estudio-chatbot-ia.md) · [AI chatbot case study (en)](examples/case-study-ai-chatbot.md).
 - **Sesión, login y perímetro en consola administrativa (Hono/TypeScript/Neon/Vercel/Cloudflare Workers):** [Caso de estudio: consola de licencias](examples/caso-estudio-consola-licencias.md) · [Licensing console case study (en)](examples/case-study-licensing-console.md).
+- **Módulo corporativo de nómina y comisiones (Deno/Oak/MongoDB/React/Cloudflare Tunnel):** [Caso de estudio: módulo de nómina](examples/caso-estudio-modulo-nomina.md) · [Payroll module case study (en)](examples/case-study-payroll-module.md).
 
 ## Contenido del repositorio
 
@@ -232,7 +233,9 @@ Casos de estudio detallados con traza técnica, código corregido y batería de 
 │   ├── caso-estudio-chatbot-ia.md         Caso real en español (Chatbot IA transaccional)
 │   ├── case-study-ai-chatbot.md           Real-world case study in English
 │   ├── caso-estudio-consola-licencias.md  Caso real en español (Consola administrativa Hono/Neon)
-│   └── case-study-licensing-console.md    Real-world case study in English
+│   ├── case-study-licensing-console.md    Real-world case study in English
+│   ├── caso-estudio-modulo-nomina.md      Caso real en español (Módulo de nómina Deno/MongoDB)
+│   └── case-study-payroll-module.md       Real-world case study in English
 ├── tests/
 │   └── skill.test.mjs                 Validación automatizada del paquete
 ├── skillSecurity.md                   Copia de lectura independiente

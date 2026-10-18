@@ -190,6 +190,7 @@ Detailed case studies with technical traces, remediated code diffs, and test sui
 - **Authentication, session lifecycle, and role access control (Python/PyQt6 desktop POS):** [POS authentication and session case study](examples/case-study-pos-authentication.md) · [Caso de estudio: autenticación y sesión POS (es)](examples/caso-estudio-autenticacion-pos.md).
 - **AI chatbot and transactional workflow (Astro/TypeScript/Groq/Resend):** [AI chatbot case study](examples/case-study-ai-chatbot.md) · [Caso de estudio: chatbot con IA (es)](examples/caso-estudio-chatbot-ia.md).
 - **Session, login, and perimeter in an admin console (Hono/TypeScript/Neon/Vercel/Cloudflare Workers):** [Licensing console case study](examples/case-study-licensing-console.md) · [Caso de estudio: consola de licencias (es)](examples/caso-estudio-consola-licencias.md).
+- **Corporate payroll and commissions module (Deno/Oak/MongoDB/React/Cloudflare Tunnel):** [Payroll module case study](examples/case-study-payroll-module.md) · [Caso de estudio: módulo de nómina (es)](examples/caso-estudio-modulo-nomina.md).
 
 ## Repository contents
 
