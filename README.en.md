@@ -8,7 +8,7 @@
   <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-0.1.0-16745b" alt="Content version: 0.1.0"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-CC_BY--NC_4.0-315a78" alt="CC BY-NC 4.0 license"></a>
   <a href="CONTRIBUTING.md"><img src="https://img.shields.io/badge/contributions-welcome-785a30" alt="Contributions welcome"></a>
-  <a href="tests/skill.test.mjs"><img src="https://img.shields.io/badge/tests-8_passing-16745b" alt="8 passing tests"></a>
+  <a href="tests/skill.test.mjs"><img src="https://img.shields.io/badge/tests-10_passing-16745b" alt="10 passing tests"></a>
 </p>
 
 <p align="center"><a href="README.md" lang="es">Español</a> · <strong>English</strong></p>
@@ -45,16 +45,16 @@ The aim is to reduce omissions and ask for concrete evidence. **It has not been 
 
 | Area | Questions it takes to the code |
 | --- | --- |
-| **Roles and permissions** | Can read access write? Are inheritance, grants and denials distinct? Can a delegate modify superior privileges? |
-| **Data isolation** | Are person, organization and ownership checked in details, reports, downloads and widgets? |
-| **Sensitive operations** | Do imports, rule changes and alternate routes enforce the product's authorization and reauthentication policy? |
-| **Integrity and side effects** | Does a calculation persist data? Do related IDs belong together? Can a partial failure leave inconsistent writes? |
+| **Roles, permissions and RLS** | Can read access write? Are inheritance, grants and denials distinct? Do RLS policies, Server Actions and desktop subwindows enforce their own guards? |
+| **Multi-tenant data isolation** | Are person, organization and ownership checked in details, reports, downloads and widgets? Does rejection prevent cross-tenant ID enumeration (`404` vs `403`)? |
+| **Sensitive operations, AI and webhooks** | Do imports, LLM transactional flows, outbound emails and webhooks enforce authorization, role filtering, cryptographic signatures and CRLF sanitization? |
+| **Integrity and concurrency (TOCTOU)** | Does a calculation persist data? Do related IDs belong together? Are concurrent writes and partial failures handled atomically? |
 | **Files and images** | Is actual content validated? Are stored bytes sanitized? Are access, replacement and orphaned files handled? |
-| **Authentication and sessions** | Are expiry, revocation and account status enforced? Is credential storage appropriate to the architecture? |
-| **Resource limits and configuration** | Are limits applied before expensive work? Are only known proxies trusted? Does a missing required safeguard fail safely? |
+| **Authentication and sessions** | Does logout, password rotation or account deactivation revoke active access and close open views? Is credential storage appropriate to the architecture? |
+| **Resource limits, proxies and headers** | Are limits applied before expensive work or paid APIs? Is the client IP read only from trusted hops? Are security headers served on the HTML origin? |
 | **Tests and deployment** | Are valid requests from unauthorized actors tested? Are local checks distinguished from production verification? |
 
-Apply relevant sections **within the task's scope**. An ordinary visual change should not automatically become a full application audit.
+Apply relevant sections **within the task's scope and requested mode** (read-only audit, remediation or diff review). An ordinary visual change should not automatically become a full application audit.
 
 ## How it works
 
@@ -189,6 +189,7 @@ Detailed case studies with technical traces, remediated code diffs, and test sui
 - **Shift rotations module (multi-tenant Laravel):** [Shift rotations case study](examples/case-study-shift-rotations.md) · [Caso de estudio: rotaciones de turno (es)](examples/caso-estudio-rotacion-turnos.md).
 - **Authentication, session lifecycle, and role access control (Python/PyQt6 desktop POS):** [POS authentication and session case study](examples/case-study-pos-authentication.md) · [Caso de estudio: autenticación y sesión POS (es)](examples/caso-estudio-autenticacion-pos.md).
 - **AI chatbot and transactional workflow (Astro/TypeScript/Groq/Resend):** [AI chatbot case study](examples/case-study-ai-chatbot.md) · [Caso de estudio: chatbot con IA (es)](examples/caso-estudio-chatbot-ia.md).
+- **Session, login, and perimeter in an admin console (Hono/TypeScript/Neon/Vercel/Cloudflare Workers):** [Licensing console case study](examples/case-study-licensing-console.md) · [Caso de estudio: consola de licencias (es)](examples/caso-estudio-consola-licencias.md).
 
 ## Repository contents
 

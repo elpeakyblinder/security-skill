@@ -110,6 +110,24 @@ test('the canonical and standalone instruction copies are identical', () => {
   );
 });
 
+function extractYamlDescription(frontmatter) {
+  const inline = frontmatter.match(/^description:\s*(?![>|])(.+)$/m)?.[1]?.trim();
+  if (inline) {
+    return inline.replace(/^["']|["']$/g, '');
+  }
+
+  const block = frontmatter.match(/^description:\s*[>|][-+]?\s*\n((?:[ \t]+.+\n?)+)/m)?.[1];
+  if (block) {
+    return block
+      .split('\n')
+      .map((line) => line.trim())
+      .filter(Boolean)
+      .join(' ');
+  }
+
+  return undefined;
+}
+
 test('release version, skill name, license and description are valid', () => {
   const source = read(join(skill, 'SKILL.md'));
   const frontmatter = source.match(/^---\n([\s\S]*?)\n---/)?.[1];
@@ -118,12 +136,56 @@ test('release version, skill name, license and description are valid', () => {
   assert.match(frontmatter, /^name: security-regression-guard$/m);
   assert.match(frontmatter, /^license: CC-BY-NC-4\.0$/m);
 
-  const description = frontmatter.match(/^description: (.+)$/m)?.[1];
-  assert.ok(description && description.length <= 1024, 'description must be present and concise');
+  const description = extractYamlDescription(frontmatter);
+  assert.ok(
+    description && description.length >= 80 && description.length <= 1024,
+    'description must be present, descriptive and within 1024 characters',
+  );
   assert.equal(
     frontmatter.match(/^\s*version: "([^"]+)"$/m)?.[1],
     read(join(root, 'VERSION')).trim(),
   );
+});
+
+test('skill instructions preserve required sections and LF line endings', () => {
+  const source = read(join(skill, 'SKILL.md'));
+  assert.ok(!source.includes('\r\n'), 'SKILL.md must use LF line endings');
+
+  for (const heading of [
+    '## Alcance, modos y forma de trabajar',
+    '### Mapa rápido por frontera (aplica solo los apartados en alcance)',
+    '## 1. Traza la operación completa antes de corregirla',
+    '## 2. Permisos: consulta, acciones y delegación',
+    '## 3. Alcance de los datos y vías de lectura',
+    '## 4. Operaciones sensibles, automatización, IA y canales externos',
+    '## 5. Archivos, sesiones, perímetro y límites de consumo: revisar según el alcance',
+    '## 6. Pruebas que detectan el fallo, no solo la presencia del código',
+    '## 7. Despliegue: no confundir código local con producción verificada',
+    '## Patrones de regresión para cualquier proyecto',
+    '## Criterio de cierre y entrega',
+    '## Autoría, licencia y aviso',
+  ]) {
+    assert.ok(source.includes(heading), `SKILL.md missing section: ${heading}`);
+  }
+});
+
+test('bilingual case studies are paired and linked in both README files', () => {
+  const exampleFiles = readdirSync(join(root, 'examples')).filter((name) => name.endsWith('.md'));
+  const esFiles = exampleFiles.filter((name) => name.startsWith('caso-estudio-'));
+  const enFiles = exampleFiles.filter((name) => name.startsWith('case-study-'));
+
+  assert.ok(esFiles.length > 0, 'expected Spanish case studies in examples/');
+  assert.equal(esFiles.length, enFiles.length, 'Spanish and English case study counts must match');
+
+  for (const readmeName of ['README.md', 'README.en.md']) {
+    const content = read(join(root, readmeName));
+    for (const exampleName of exampleFiles) {
+      assert.ok(
+        content.includes(`examples/${exampleName}`),
+        `${readmeName}: missing link to examples/${exampleName}`,
+      );
+    }
+  }
 });
 
 test('Markdown documents have balanced fenced code blocks', () => {
@@ -132,3 +194,4 @@ test('Markdown documents have balanced fenced code blocks', () => {
     assert.equal(fences % 2, 0, `${file}: unbalanced fenced code block`);
   }
 });
+

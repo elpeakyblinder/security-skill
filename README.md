@@ -8,7 +8,7 @@
   <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-0.1.0-16745b" alt="Versión del contenido: 0.1.0"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-CC_BY--NC_4.0-315a78" alt="Licencia CC BY-NC 4.0"></a>
   <a href="CONTRIBUTING.md"><img src="https://img.shields.io/badge/contributions-welcome-785a30" alt="Contribuciones bienvenidas"></a>
-  <a href="tests/skill.test.mjs"><img src="https://img.shields.io/badge/tests-8_passing-16745b" alt="8 pruebas aprobadas"></a>
+  <a href="tests/skill.test.mjs"><img src="https://img.shields.io/badge/tests-10_passing-16745b" alt="10 pruebas aprobadas"></a>
 </p>
 
 <p align="center"><strong>Español</strong> · <a href="README.en.md" lang="en">English</a></p>
@@ -52,16 +52,16 @@ La intención es reducir omisiones y pedir evidencia concreta. **No se ha demost
 
 | Área | Preguntas que lleva al código |
 | --- | --- |
-| **Roles y permisos** | ¿Consultar permite también escribir? ¿Se distinguen herencia, concesión y denegación? ¿Puede un delegado modificar privilegios superiores? |
-| **Aislamiento de datos** | ¿Se comprueban persona, organización y propiedad en detalles, reportes, descargas y widgets? |
-| **Operaciones sensibles** | ¿Importaciones, cambios de reglas y rutas alternativas exigen la autorización y reautenticación definidas por el producto? |
-| **Integridad y efectos** | ¿Un cálculo guarda datos? ¿Los IDs relacionados pertenecen al mismo recurso? ¿Un fallo intermedio deja escrituras parciales? |
+| **Roles, permisos y RLS** | ¿Consultar permite también escribir? ¿Se distinguen herencia, concesión y denegación? ¿Las políticas RLS, Server Actions y subventanas aplican control propio? |
+| **Aislamiento multi-tenant** | ¿Se comprueban persona, organización y propiedad en detalles, reportes, descargas y widgets? ¿Se evita enumerar IDs de otras empresas (`404` frente a `403`)? |
+| **Operaciones sensibles, IA y webhooks** | ¿Importaciones, flujos conversacionales con LLMs, correos y webhooks exigen autorización, filtrado de roles, firma criptográfica y saneamiento CRLF? |
+| **Integridad y concurrencia (TOCTOU)** | ¿Un cálculo guarda datos? ¿Los IDs relacionados pertenecen al mismo recurso? ¿Las escrituras concurrentes y fallos intermedios son atómicos? |
 | **Archivos e imágenes** | ¿Se valida el contenido real? ¿Los bytes almacenados están saneados? ¿Se controlan acceso, reemplazos y archivos huérfanos? |
-| **Autenticación y sesiones** | ¿Se respetan expiración, revocación y estado de cuenta? ¿Las credenciales se almacenan según la arquitectura? |
-| **Consumo y configuración** | ¿Hay límites antes del trabajo costoso? ¿Se confía únicamente en proxies conocidos? ¿Una protección ausente falla de forma controlada? |
+| **Autenticación y sesiones** | ¿Cerrar sesión, rotar la contraseña o dar de baja la cuenta revoca el acceso abierto y cierra vistas activas? ¿Las credenciales se almacenan de forma segura? |
+| **Consumo, proxy y cabeceras** | ¿Hay límites antes del trabajo costoso o APIs de pago? ¿La IP proviene solo del salto confiable? ¿El origen que sirve el HTML envía las cabeceras de protección? |
 | **Pruebas y despliegue** | ¿Se prueban peticiones válidas de actores sin permiso? ¿Se distingue lo verificado localmente de lo pendiente en producción? |
 
-Los apartados se aplican **según el alcance de la tarea**. Corregir un cambio visual ordinario no debe convertirse automáticamente en una auditoría de toda la aplicación.
+Los apartados se aplican **según el alcance y el modo solicitado** (auditoría de solo lectura, corrección o revisión de diff). Corregir un cambio visual ordinario no debe convertirse automáticamente en una auditoría de toda la aplicación.
 
 ## Cómo trabaja
 
@@ -206,6 +206,7 @@ Casos de estudio detallados con traza técnica, código corregido y batería de 
 - **Módulo de turnos rotativos (Laravel multi-tenant):** [Caso de estudio: rotaciones de turno](examples/caso-estudio-rotacion-turnos.md) · [Shift rotations case study (en)](examples/case-study-shift-rotations.md).
 - **Autenticación, ciclo de sesión y control de acceso (Python/PyQt6 POS desktop):** [Caso de estudio: autenticación y sesión POS](examples/caso-estudio-autenticacion-pos.md) · [POS authentication and session case study (en)](examples/case-study-pos-authentication.md).
 - **Chatbot asistido por IA y flujo transaccional (Astro/TypeScript/Groq/Resend):** [Caso de estudio: chatbot con IA](examples/caso-estudio-chatbot-ia.md) · [AI chatbot case study (en)](examples/case-study-ai-chatbot.md).
+- **Sesión, login y perímetro en consola administrativa (Hono/TypeScript/Neon/Vercel/Cloudflare Workers):** [Caso de estudio: consola de licencias](examples/caso-estudio-consola-licencias.md) · [Licensing console case study (en)](examples/case-study-licensing-console.md).
 
 ## Contenido del repositorio
 
@@ -229,7 +230,9 @@ Casos de estudio detallados con traza técnica, código corregido y batería de 
 │   ├── caso-estudio-autenticacion-pos.md  Caso real en español (Python/PyQt6 POS desktop)
 │   ├── case-study-pos-authentication.md   Real-world case study in English
 │   ├── caso-estudio-chatbot-ia.md         Caso real en español (Chatbot IA transaccional)
-│   └── case-study-ai-chatbot.md           Real-world case study in English
+│   ├── case-study-ai-chatbot.md           Real-world case study in English
+│   ├── caso-estudio-consola-licencias.md  Caso real en español (Consola administrativa Hono/Neon)
+│   └── case-study-licensing-console.md    Real-world case study in English
 ├── tests/
 │   └── skill.test.mjs                 Validación automatizada del paquete
 ├── skillSecurity.md                   Copia de lectura independiente
