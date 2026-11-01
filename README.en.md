@@ -191,6 +191,7 @@ Detailed case studies with technical traces, remediated code diffs, and test sui
 - **AI chatbot and transactional workflow (Astro/TypeScript/Groq/Resend):** [AI chatbot case study](examples/case-study-ai-chatbot.md) · [Caso de estudio: chatbot con IA (es)](examples/caso-estudio-chatbot-ia.md).
 - **Session, login, and perimeter in an admin console (Hono/TypeScript/Neon/Vercel/Cloudflare Workers):** [Licensing console case study](examples/case-study-licensing-console.md) · [Caso de estudio: consola de licencias (es)](examples/caso-estudio-consola-licencias.md).
 - **Corporate payroll and commissions module (Deno/Oak/MongoDB/React/Cloudflare Tunnel):** [Payroll module case study](examples/case-study-payroll-module.md) · [Caso de estudio: módulo de nómina (es)](examples/caso-estudio-modulo-nomina.md).
+- **Hybrid desktop ERP and Point-of-Sale with offline fallback (Tauri v2/React 19/Hono/Drizzle/Neon):** [Hybrid desktop ERP and POS case study](examples/case-study-tauri-pos-erp.md) · [Caso de estudio: ERP y POS en Tauri (es)](examples/caso-estudio-erp-pos-tauri.md).
 
 ## Repository contents
 

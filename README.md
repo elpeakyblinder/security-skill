@@ -208,6 +208,7 @@ Casos de estudio detallados con traza técnica, código corregido y batería de 
 - **Chatbot asistido por IA y flujo transaccional (Astro/TypeScript/Groq/Resend):** [Caso de estudio: chatbot con IA](examples/caso-estudio-chatbot-ia.md) · [AI chatbot case study (en)](examples/case-study-ai-chatbot.md).
 - **Sesión, login y perímetro en consola administrativa (Hono/TypeScript/Neon/Vercel/Cloudflare Workers):** [Caso de estudio: consola de licencias](examples/caso-estudio-consola-licencias.md) · [Licensing console case study (en)](examples/case-study-licensing-console.md).
 - **Módulo corporativo de nómina y comisiones (Deno/Oak/MongoDB/React/Cloudflare Tunnel):** [Caso de estudio: módulo de nómina](examples/caso-estudio-modulo-nomina.md) · [Payroll module case study (en)](examples/case-study-payroll-module.md).
+- **ERP y Punto de Venta híbrido de escritorio con soporte offline (Tauri v2/React 19/Hono/Drizzle/Neon):** [Caso de estudio: ERP y POS en Tauri](examples/caso-estudio-erp-pos-tauri.md) · [Hybrid desktop ERP and POS case study (en)](examples/case-study-tauri-pos-erp.md).
 
 ## Contenido del repositorio
 
@@ -235,7 +236,9 @@ Casos de estudio detallados con traza técnica, código corregido y batería de 
 │   ├── caso-estudio-consola-licencias.md  Caso real en español (Consola administrativa Hono/Neon)
 │   ├── case-study-licensing-console.md    Real-world case study in English
 │   ├── caso-estudio-modulo-nomina.md      Caso real en español (Módulo de nómina Deno/MongoDB)
-│   └── case-study-payroll-module.md       Real-world case study in English
+│   ├── case-study-payroll-module.md       Real-world case study in English
+│   ├── caso-estudio-erp-pos-tauri.md      Caso real en español (ERP y POS híbrido Tauri/Hono)
+│   └── case-study-tauri-pos-erp.md        Real-world case study in English
 ├── tests/
 │   └── skill.test.mjs                 Validación automatizada del paquete
 ├── skillSecurity.md                   Copia de lectura independiente
