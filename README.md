@@ -209,6 +209,7 @@ Casos de estudio detallados con traza técnica, código corregido y batería de 
 - **Sesión, login y perímetro en consola administrativa (Hono/TypeScript/Neon/Vercel/Cloudflare Workers):** [Caso de estudio: consola de licencias](examples/caso-estudio-consola-licencias.md) · [Licensing console case study (en)](examples/case-study-licensing-console.md).
 - **Módulo corporativo de nómina y comisiones (Deno/Oak/MongoDB/React/Cloudflare Tunnel):** [Caso de estudio: módulo de nómina](examples/caso-estudio-modulo-nomina.md) · [Payroll module case study (en)](examples/case-study-payroll-module.md).
 - **ERP y Punto de Venta híbrido de escritorio con soporte offline (Tauri v2/React 19/Hono/Drizzle/Neon):** [Caso de estudio: ERP y POS en Tauri](examples/caso-estudio-erp-pos-tauri.md) · [Hybrid desktop ERP and POS case study (en)](examples/case-study-tauri-pos-erp.md).
+- **Migración de autenticación a Rust en un buscador de empleo (Astro 7/React 19/Rust Axum/Neon/Vercel):** [Caso de estudio: buscador de empleo Astro y Rust](examples/caso-estudio-buscador-empleo-astro-rust.md) · [Job search app authentication case study (en)](examples/case-study-job-search-astro-rust.md).
 
 ## Contenido del repositorio
 
@@ -238,7 +239,9 @@ Casos de estudio detallados con traza técnica, código corregido y batería de 
 │   ├── caso-estudio-modulo-nomina.md      Caso real en español (Módulo de nómina Deno/MongoDB)
 │   ├── case-study-payroll-module.md       Real-world case study in English
 │   ├── caso-estudio-erp-pos-tauri.md      Caso real en español (ERP y POS híbrido Tauri/Hono)
-│   └── case-study-tauri-pos-erp.md        Real-world case study in English
+│   ├── case-study-tauri-pos-erp.md        Real-world case study in English
+│   ├── caso-estudio-buscador-empleo-astro-rust.md  Caso real en español (Buscador de empleo Astro/Rust)
+│   └── case-study-job-search-astro-rust.md         Real-world case study in English
 ├── tests/
 │   └── skill.test.mjs                 Validación automatizada del paquete
 ├── skillSecurity.md                   Copia de lectura independiente

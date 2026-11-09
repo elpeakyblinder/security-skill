@@ -192,6 +192,7 @@ Detailed case studies with technical traces, remediated code diffs, and test sui
 - **Session, login, and perimeter in an admin console (Hono/TypeScript/Neon/Vercel/Cloudflare Workers):** [Licensing console case study](examples/case-study-licensing-console.md) · [Caso de estudio: consola de licencias (es)](examples/caso-estudio-consola-licencias.md).
 - **Corporate payroll and commissions module (Deno/Oak/MongoDB/React/Cloudflare Tunnel):** [Payroll module case study](examples/case-study-payroll-module.md) · [Caso de estudio: módulo de nómina (es)](examples/caso-estudio-modulo-nomina.md).
 - **Hybrid desktop ERP and Point-of-Sale with offline fallback (Tauri v2/React 19/Hono/Drizzle/Neon):** [Hybrid desktop ERP and POS case study](examples/case-study-tauri-pos-erp.md) · [Caso de estudio: ERP y POS en Tauri (es)](examples/caso-estudio-erp-pos-tauri.md).
+- **Authentication migration to Rust in a job search app (Astro 7/React 19/Rust Axum/Neon/Vercel):** [Job search app authentication case study](examples/case-study-job-search-astro-rust.md) · [Caso de estudio: buscador de empleo Astro y Rust (es)](examples/caso-estudio-buscador-empleo-astro-rust.md).
 
 ## Repository contents
 
